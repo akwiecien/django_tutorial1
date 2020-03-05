@@ -8,7 +8,7 @@ CITY_STATUS = (
 )
 
 class Continent(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     iso_code = models.CharField(max_length=3)
     name = models.CharField(max_length=250)
 
@@ -18,7 +18,7 @@ class Continent(models.Model):
 class Country(models.Model):
     continent_id = models.ForeignKey(Continent, models.CASCADE)
 
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     iso_code = models.CharField(max_length=3)
     name = models.CharField(max_length=250)
 
@@ -28,7 +28,7 @@ class Country(models.Model):
 class City(models.Model):
     country_id = models.ForeignKey(Country, on_delete=models.CASCADE)
 
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=250)
     status = models.CharField(max_length=1, default='R', choices=CITY_STATUS)
 
