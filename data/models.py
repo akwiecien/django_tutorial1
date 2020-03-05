@@ -7,6 +7,10 @@ CITY_STATUS = (
     ('R', 'Regular')
 )
 
+class CityStatusQuerySet(models.QuerySet):
+    def get_capitol_cities(self):
+        return self.filter(models.Q(status='C'))
+    
 class Continent(models.Model):
     id = models.AutoField(primary_key=True)
     iso_code = models.CharField(max_length=3)
@@ -32,6 +36,7 @@ class City(models.Model):
     name = models.CharField(max_length=250)
     status = models.CharField(max_length=1, default='R', choices=CITY_STATUS)
 
+    objects = CityStatusQuerySet.as_manager()
+
     def __str__(self):
         return self.name
-
