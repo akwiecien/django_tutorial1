@@ -1,79 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Django - World</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container" style="margin-top: 50px;">
-      <h3><span class="badge badge-secondary">Statistics</span></h3>
-      <button type="button" class="btn btn-primary">
-        Continents <span class="badge badge-light">{{continents_amount}}</span>
-      </button>
-      <button type="button" class="btn btn-success">
-        Countries <span class="badge badge-light">{{countries_amount}}</span>
-      </button>
-      <button type="button" class="btn btn-danger">
-        Cities <span class="badge badge-light">{{cities_amount}}</span>
-      </button>
-    </div>
-    <div class="container" style="margin-top: 50px;">
-      <h3><span class="badge badge-secondary">Countries</span></h3>
-      <table class="table table-sm">
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>ISO</th>
-        </tr>
-        
-          {% for c in countries %}
-          <tr>
-            <td>{{c.id}}</td>
-            <td>{{c.name}}</td>
-            <td>{{c.iso_code}}</td>
-          </tr>
-          {% endfor %}
-      </table>
-    </div>
-    <div class="container">
-      <h3><span class="badge badge-secondary">Cities</span></h3>
-      <table class="table table-sm">
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Status</th>
-        </tr>
-          {% for c in cities %}
-          <tr>
-            <td>{{c.id}}</td>
-            <td>{{c.name}}</td>
-            <td>{{c.status}}</td>
-          </tr>
-          {% endfor %}
-      </table>
-    </div>
-    <div class="container">
-      <h3><span class="badge badge-secondary">Capitols</span></h3>
-      <table class="table table-sm">
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Status</th>
-        </tr>
-          {% for c in capitols %}
-          <tr>
-            <td>{{c.id}}</td>
-            <td>{{c.name}}</td>
-            <td>{{c.status}}</td>
-          </tr>
-          {% endfor %}
-      </table>
-    </div>
+{% block content %}
+
+<div class="container" style="margin-top: 50px;">
+  <h3><span class="badge badge-secondary">Statistics</span></h3>
+  <button type="button" class="btn btn-primary">
+    Continents <span class="badge badge-light">{{continents_amount}}</span>
+  </button>
+  <button type="button" class="btn btn-success">
+    Countries <span class="badge badge-light">{{countries_amount}}</span>
+  </button>
+  <button type="button" class="btn btn-danger">
+    Cities <span class="badge badge-light">{{cities_amount}}</span>
+  </button>
+</div>
+<div class="container" style="margin-top: 50px;">
+  <h3><span class="badge badge-secondary">Countries</span></h3>
+  <table class="table table-sm">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>ISO</th>
+    </tr>
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
+    {% for c in countries %}
+    <tr>
+      <td>{{c.id}}</td>
+      <td>{{c.name}}</td>
+      <td>{{c.iso_code}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a class="btn btn-link" href="{% url 'world_add_country' %}">Add Country</a>
+  
+</div>
+<div class="container" style="margin-top: 50px;">
+  <h3><span class="badge badge-secondary">Cities</span></h3>
+  <table class="table table-sm">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Type</th>
+    </tr>
+      {% for c in cities %}
+      <tr>
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.type}}</td>
+      </tr>
+      {% endfor %}
+  </table>
+</div>
+<div class="container">
+  <h3><span class="badge badge-secondary">Capitols</span></h3>
+  <table class="table table-sm">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Type</th>
+    </tr>
+      {% for c in capitols %}
+      <tr>
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.type}}</td>
+      </tr>
+      {% endfor %}
+  </table>
+</div>
+
+{% endblock %}    

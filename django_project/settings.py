@@ -25,7 +25,12 @@ SECRET_KEY = 'gm+acjn9u3@uhdqa35!qr)24^bt043@6mszp-!ylohrtzh%6f4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Login
+LOGIN_REDIRECT_URL = 'world_home'
+LOGOUT_REDIRECT_URL = 'world_login'
+LOGIN_URL = 'world_login'
+
+ALLOWED_HOSTS = ['django-project.eba-zh63dv4f.us-east-1.elasticbeanstalk.com','127.0.0.1']
 
 
 # Application definition
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'data',
     'world'
 ]
@@ -135,3 +141,5 @@ STATIC_URL = '/static/'
 STATIC_FILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+CRISPY_TEMPLATE_PACK='bootstrap4'
